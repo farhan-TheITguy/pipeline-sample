@@ -14,8 +14,8 @@ jobs:
       - name: Importing the variable files
         uses: actions/checkout@master
         with:
-          repository: orgname/reponame
-          token: ${{ secrets.my_pat }}
+          repository: scripts
+          # token: ${{ secrets.my_pat }}
       - uses: actions/checkout@v3
 
       - name: Run a one-line script
