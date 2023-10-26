@@ -16,5 +16,5 @@ jobs:
       - name: Set output
         run: echo "owner=farhan" >> $GITHUB_OUTPUT
       - name: print state/output
-        run: echo "${env.owner}"
+        run: echo "${{ env.owner }}"
         
