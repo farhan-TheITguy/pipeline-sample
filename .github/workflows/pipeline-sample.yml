@@ -1,8 +1,8 @@
 name: pipeline-sample
 
 on:
-  # push:
-  #   branches: [ "main" ]
+  push:
+    branches: [ "main" ]
   # pull_request:
   #   branches: [ "main" ]
   workflow_dispatch:
@@ -27,6 +27,7 @@ jobs:
         run: |
           while read line; do
             echo "$line" >> $GITHUB_ENV
+            echo "$line" >> $GITHUB_OUTPUT
           done < vars/dev.env
 
       - uses: actions/checkout@v3
@@ -50,7 +51,7 @@ jobs:
           pwd
           whoami
           echo "Checking the variables from the file"
-          echo "Environment = $environment"
-          echo "Owner = $owner"
-          echo "Version = $version"
+          echo "Environment = ${{ steps.vars.outputs.environment }}"
+          echo "Owner = ${{ steps.vars.outputs.owner }}"
+          echo "Version = ${{ steps.vars.outputs.version }}"
       
