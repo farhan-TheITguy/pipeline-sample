@@ -21,4 +21,9 @@ jobs:
         run: echo "${{steps.save_state.outputs.owner}}"
       - name: print output
         run: echo "${{steps.save_output.outputs.owner}}"
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print output
+        run: echo "${{prereq.steps.save_output.outputs.owner}}"
         
