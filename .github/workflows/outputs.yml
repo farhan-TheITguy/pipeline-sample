@@ -26,5 +26,5 @@ jobs:
     needs: prereq
     steps:
       - name: print output
-        run: echo "${{steps.save_output.outputs.owner}}"
+        run: echo "${{needs.prereq.steps.save_output.outputs.owner}}"
         
