@@ -11,20 +11,35 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Importing the variable files
+      - name: Checkout the variable repo
         uses: actions/checkout@master
         with:
           repository: farhan-TheITguy/scripts
           token: ${{ secrets.pat }}
           
-      # - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Run a one-line script
+      - name: Before main repo checkout
         run: |
           ls -l
           pwd
           whoami
-          echo "name=farhan" >> $GITHUB_ENV
+          
+      - name: Importing the variables from the file
+        run: |
+          while read line; do
+            echo "$line" >> $GITHUB_ENV
+          done < vars/dev.env
 
-      - name: Print Env
-        run: echo "Printing name variable from previous stage";echo $name
+      - uses: actions/checkout@v3
+
+      - name: After main repo checkout
+        run: |
+          ls -l
+          pwd
+          whoami
+          echo "Checking the variables from the file"
+          echo "Environment = $environment"
+          echo "Owner = $owner"
+          echo "Version = $version"
+      
