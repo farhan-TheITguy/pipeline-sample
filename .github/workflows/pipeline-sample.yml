@@ -16,8 +16,6 @@ jobs:
         with:
           repository: farhan-TheITguy/scripts
           token: ${{ secrets.pat }}
-          
-      - uses: actions/checkout@v3
 
       - name: Before main repo checkout
         run: |
