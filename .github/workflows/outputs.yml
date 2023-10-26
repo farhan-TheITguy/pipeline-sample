@@ -8,13 +8,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  job1:
+  prereq:
     runs-on: ubuntu-latest
     steps:
       - name: Save state
+        id: save_state
         run: echo "owner=farhan" >> $GITHUB_STATE
       - name: Set output
+        id: save_output
         run: echo "owner=farhan" >> $GITHUB_OUTPUT
-      - name: print state/output
-        run: echo "${{ env.owner }}"
+      - name: print state
+        run: echo "owner: ${{ steps.save_state.outputs.* }}"
         
