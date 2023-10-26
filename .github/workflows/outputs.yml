@@ -18,5 +18,7 @@ jobs:
         id: save_output
         run: echo "owner=farhan" >> $GITHUB_OUTPUT
       - name: print state
-        run: echo "owner: ${{ steps.save_state.outputs.* }}"
+        run: echo "${{steps.save_state.outputs.owner}}"
+      - name: print output
+        run: echo "${{steps.save_output.outputs.owner}}"
         
