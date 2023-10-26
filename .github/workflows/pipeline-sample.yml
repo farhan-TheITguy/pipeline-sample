@@ -10,14 +10,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      env: ${{ steps.build.outputs.environment }}
+      owner: ${{ steps.build.outputs.owner }}
+      ver: ${{ steps.build.outputs.version }}
     steps:
       - name: Checkout the variable repo
+        id: step1
         uses: actions/checkout@master
         with:
           repository: farhan-TheITguy/scripts
           token: ${{ secrets.pat }}
 
       - name: Before main repo checkout
+        id: step2
         run: |
           ls -l
           pwd
@@ -52,12 +58,16 @@ jobs:
     needs: build
     steps:
       - name: After main repo checkout
+        env:
+          env: ${{needs.build.outputs.env}}
+          owner: ${{needs.build.outputs.owner}}
+          ver: ${{needs.build.outputs.ver}}
         run: |
           ls -l
           pwd
           whoami
           echo "Checking the variables from the file"
-          echo "Environment = ${{ steps.vars.outputs.environment }}"
-          echo "Owner = ${{ steps.vars.outputs.owner }}"
-          echo "Version = ${{ steps.vars.outputs.version }}"
+          echo "Environment = ${env}"
+          echo "Owner = ${owner}"
+          echo "Version = ${ver}"
       
