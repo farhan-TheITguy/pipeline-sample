@@ -40,4 +40,17 @@ jobs:
           echo "Environment = $environment"
           echo "Owner = $owner"
           echo "Version = $version"
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: After main repo checkout
+        run: |
+          ls -l
+          pwd
+          whoami
+          echo "Checking the variables from the file"
+          echo "Environment = $environment"
+          echo "Owner = $owner"
+          echo "Version = $version"
       
