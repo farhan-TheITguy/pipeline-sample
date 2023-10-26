@@ -32,14 +32,10 @@ jobs:
       - name: Importing the variables from the file
         run: |
           while read line; do
+            line2=$(echo $line | tr '==' '::')
             echo "$line" >> $GITHUB_ENV
-            echo "$line" >> $GITHUB_OUTPUT
+            echo "::set-output name=$line2"
           done < vars/dev.env
-          
-      - name: Checking var in the same stage
-        run: |
-          echo "pr_body='My awesome PR'" >> $GITHUB_OUTPUT
-          echo "PR Body = ${{ steps.vars.outputs.pr_body }}"
           
       - uses: actions/checkout@v3
 
