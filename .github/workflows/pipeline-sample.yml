@@ -32,7 +32,9 @@ jobs:
       - name: Importing the variables from the file
         run: |
           while read line; do
+            echo "$line"
             line2=$(echo $line | tr '==' '::')
+            echo $line2
             echo "$line" >> $GITHUB_ENV
             echo "::set-output name=$line2"
           done < vars/dev.env
