@@ -6,8 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Testing the exported env
     steps:
-      - name: Check Out Source Code
-        uses: actions/checkout@v2
+      - name: Checkout the variable repo
+        id: step1
+        uses: actions/checkout@master
+        with:
+          repository: farhan-TheITguy/scripts
+          token: ${{ secrets.pat }}
       - name: export env
         uses: krisalay/export-env@v1.0.0
         with:
