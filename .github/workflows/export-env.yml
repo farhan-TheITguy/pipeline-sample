@@ -1,6 +1,6 @@
 name: Export ENV
 on:
-  push:
+  # push:
   workflow_dispatch:
 jobs:
   export_env:
