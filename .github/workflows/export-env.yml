@@ -1,0 +1,16 @@
+name: Export ENV
+on:
+  workflow_dispatch:
+jobs:
+  export_env:
+    runs-on: ubuntu-latest
+    name: Testing the exported env
+    steps:
+      - name: Check Out Source Code
+        uses: actions/checkout@v2
+      - name: export env
+        uses: krisalay/export-env@v1.0.0
+        with:
+          filename: .env
+      - name: Print env
+        run: echo "Owner = $owner"
