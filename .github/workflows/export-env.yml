@@ -19,3 +19,11 @@ jobs:
           filename: vars/dev.env
       - name: Print env
         run: echo "Owner = $owner"
+  print:
+    runs-on: ubuntu-latest
+    name: Testing the exported env
+    needs:
+      - export_env
+    steps:
+      - name: Print env
+        run: echo "Owner = $owner"
