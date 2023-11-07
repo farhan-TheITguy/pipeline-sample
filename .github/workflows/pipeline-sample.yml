@@ -10,10 +10,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      env: ${{ steps.build.outputs.environment }}
-      owner: ${{ steps.build.outputs.owner }}
-      ver: ${{ steps.build.outputs.version }}
+    # outputs:
+    #   env: ${{ steps.build.outputs.environment }}
+    #   owner: ${{ steps.build.outputs.owner }}
+    #   ver: ${{ steps.build.outputs.version }}
     steps:
       - name: Checkout the variable repo
         id: step1
