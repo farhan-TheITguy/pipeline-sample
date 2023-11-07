@@ -13,10 +13,8 @@ jobs:
         with:
           repository: farhan-TheITguy/scripts
           token: ${{ secrets.pat }}
-      - name: export env
-        uses: krisalay/export-env@v1.0.0
-        with:
-          filename: vars/dev.env
+      - name: Export variable
+        run: echo "::set-env name=owner::farhan"
       - name: Print env
         run: echo "Owner = $owner"
   print:
