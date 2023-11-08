@@ -39,4 +39,5 @@ jobs:
           echo "Environment = $environment"
           echo "Owner = $owner"
           echo "Version = $version"
+          echo "API Version = ${{ github.event.inputs.api_version }}"
       
