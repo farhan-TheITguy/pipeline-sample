@@ -6,6 +6,11 @@ on:
   # pull_request:
   #   branches: [ "main" ]
   workflow_dispatch:
+    inputs:
+      api_version:
+        description: 'API version'
+        required: true
+        default: '2.5.3'
 
 jobs:
   build:
