@@ -17,4 +17,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print the version
-        run: echo "api_version - ${{ api_version }}"
+        run: echo "api_version - ${pi_version}"
