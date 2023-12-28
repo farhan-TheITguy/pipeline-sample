@@ -10,7 +10,7 @@ on:
         required: true
         default: '2.5.3'
 env:
-  api_version: ${{ github.event.inputs.api_version || 2.5.3' }}
+  api_version: ${{ github.event.inputs.api_version || '2.5.3' }}
 
 jobs:
   build:
