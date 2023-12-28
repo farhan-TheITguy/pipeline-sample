@@ -1,10 +1,6 @@
 name: pipeline-sample
 
 on:
-  # push:
-  #   branches: [ "main" ]
-  # pull_request:
-  #   branches: [ "main" ]
   workflow_dispatch:
     inputs:
       api_version:
@@ -16,28 +12,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the variable repo
-        id: step1
-        uses: actions/checkout@master
-        with:
-          repository: farhan-TheITguy/scripts
-          token: ${{ secrets.pat }}
-          
-      - name: Importing the variables from the file
-        run: |
-          while read line; do
-            echo "$line"
-            line2=$(echo $line | tr '==' '::')
-            echo $line2
-            echo "$line" >> $GITHUB_ENV
-            echo "::set-output name=$line2"
-          done < vars/dev.env
-
-      - name: Printing the variables
-        run: |
-          echo "Checking the variables from the file"
-          echo "Environment = $environment"
-          echo "Owner = $owner"
-          echo "Version = $version"
-          echo "API Version = ${{ github.event.inputs.api_version }}"
+      - name: Print api version
+        run: echo "api_version - ${{ github.event.inputs.api_version }}"
       
