@@ -1,0 +1,17 @@
+name: simple-pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      api_version:
+        description: 'API version'
+        required: true
+        default: '2.5.3'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print the version
+        run: echo "api_version - $api_version"
+      
