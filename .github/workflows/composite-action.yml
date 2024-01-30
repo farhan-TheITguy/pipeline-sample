@@ -2,6 +2,16 @@ name: composite-action
 
 on:
   workflow_dispatch:
+    inputs:
+      deploymentType:
+        description: 'Type of deployment'
+        required: false
+        default: 'SNAPSHOT'
+        type: choice
+        options:
+        - MAJOR
+        - MINOR
+        - SNAPSHOT
 
 jobs:
   hello_world_job:
@@ -13,5 +23,6 @@ jobs:
         uses: farhan-TheITguy/composite-action@v1
         with:
           who-to-greet: 'Farhan'
-      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+          deploymentType: ${{ inputs.deploymentType }}
+      - run: echo version ${{ steps.foo.outputs.version }}
         shell: bash
