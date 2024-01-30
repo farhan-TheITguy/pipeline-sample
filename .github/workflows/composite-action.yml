@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - id: foo
-        uses: farhan-TheITguy/composite-action
+        uses: farhan-TheITguy/composite-action@v2
         with:
           who-to-greet: 'Farhan'
           deployment-type: 'MAJOR'
