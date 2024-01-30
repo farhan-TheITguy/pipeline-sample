@@ -1,3 +1,5 @@
+name: composite-action
+
 on:
   workflow_dispatch:
 
