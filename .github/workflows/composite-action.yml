@@ -23,6 +23,6 @@ jobs:
         uses: farhan-TheITguy/composite-action@v1
         with:
           who-to-greet: 'Farhan'
-          deploymentType: ${{ inputs.deploymentType }}
+          eployment-type: ${{ inputs.deploymentType }}
       - run: echo version ${{ steps.foo.outputs.version }}
         shell: bash
