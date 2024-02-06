@@ -1,0 +1,31 @@
+name: multi-dimension
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploymentType:
+        description: 'Type of deployment'
+        required: false
+        default: 'SNAPSHOT'
+        type: choice
+        options:
+        - MAJOR
+        - MINOR
+        - SNAPSHOT
+
+jobs:
+  hello_world_job:
+    strategy:
+      matrix:
+        version: [Mohd, Farhan, Ansari]
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - uses: actions/checkout@v4
+      - id: foo
+        uses: farhan-TheITguy/composite-action@v3
+        with:
+          who-to-greet: ${{ matrix.version }}
+          deployment-type: ${{ inputs.deploymentType }}
+      - run: echo version ${{ steps.foo.outputs.version }}
+        shell: bash
