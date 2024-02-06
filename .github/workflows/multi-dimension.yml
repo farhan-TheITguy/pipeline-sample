@@ -25,7 +25,7 @@ jobs:
       - id: foo
         uses: farhan-TheITguy/composite-action@v3
         with:
-          who-to-greet: ${{ matrix.version }}
+          who-to-greet: My-Name-is-${{ matrix.version }}
           deployment-type: ${{ inputs.deploymentType }}
       - run: echo version ${{ steps.foo.outputs.version }}
         shell: bash
